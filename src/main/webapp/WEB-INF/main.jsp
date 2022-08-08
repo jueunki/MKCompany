@@ -10,16 +10,24 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <style>
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+  }
+}
 body {
 	margin: 0px;
 	overflow-x: hidden; /* scroll설정하는거! */
 }
 
 #bgimg {
-	border: 1px solid gray;
 	position: absolute;
 	width: 100%;
-	height: 120vh;
+	height: 112.5vh;
 	top: 0%;
 	z-index: -9999;
 	object-fit: cover;
@@ -27,47 +35,55 @@ body {
 }
 
 .h1 {
-	padding-top: 1%;
+	padding-top: 0%;
 	width: 100%;
-	height: 20vh;
-	margin: 0px auto;
-	border: 1px solid gray;
+	height: 22vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
 
 .m1 {
 	width: 100%;
 	height: 90vh;
 	margin: 0px auto;
-	border: 1px solid gray;
+	/* border: 1px solid gray; */
 }
 
 .f1 {
 	width: 100%;
 	height: 30vh;
 	margin: 0px auto;
+	background-color:white;
+	z-index:-999;
 	border: 1px solid gray;
 }
 
 #depth1 {
-	padding-top: 1%;
+	padding-top: 4%;
 	display: flex;
 	justify-content: space-evenly;
 	width: 55%;
 }
-
+#depth1:hover .depth2{
+	animation-name:dropdown;
+	animation-duration:0.5s;
+}
 .depth2 {
 	display: none;
-	font-size: 0.9em;
+	font-size: 0.7em;
+	color:white;
+	text-align:center;
+	z-index:10;
+	position:relative;
+	top:10%;
+	width: 95%;
 }
-
+.depth2 a{
+	padding:15%;
+	background-color:black;
+}
 #depth1:hover .depth2 {
 	display: block;
-	position: relative;
-	left: 0px;
-	top: 5%;
 }
 
 ul {
@@ -78,37 +94,52 @@ ul {
 #depth1 a {
 	text-decoration: none;
 	color: white;
-	display: block;
+	display:block;
+	width:100%;
 	font-size: 1em;
 	font-weight: 600;
 }
 
 #logo {
-	padding-top: 2%;
+
+	padding-top: 40%;
 	width: 90%;
+	margin-top:30%;
+	padding: 0 2%;
+	width:100%;
+	left:0%;
+	position:relative;
 }
 
 .topbtn {
-	/* 꾸미는 옵션넣기 */ /* 
+	font-size:0.8em;
+	font-weight: 800;
+	background-color:rgba(255,255,255,.2);
+	border-radius:28px;
+    padding: 0 2%;
     z-index: 3;
-    padding: 0 30px;
-    border-radius: 28px;
-    background-color: rgba(255,255,255,.2); */
-    /* color:#FAFAFA; */
+    width:5%;
+    height:5.5vh;
+    margin:auto 0;
+    /* 
+    	font-size:0.8em;
+	font-weight: 800;
+	background-color:rgba(255,255,255,.2);
+	border-radius:28px;
+    padding: 0 2%;
+    z-index: 3;
+    width:5%;
+    height:5.5vh;
+    margin:auto 0;
+    
+    
+     */
 }
-/* #topbtn a:before {
-    position: absolute;
-    color:#FAFAFA;
-    right: 0;
-    top: 3px;
-    width: 1px;
-    height: 8px;
-    content: '';
-    background-color: rgba(255,255,255,.5);
-} */
+
 .square {
 	justify-content: space-evenly;
 	border-radius: 30px;
+	
 }
 
 .square>div {
@@ -132,7 +163,6 @@ ul {
 	display: flex;
 	justify-content: center;
 	height: 600px;
-	margin-top: 35px;
 }
 
 #wrapper>* {
@@ -231,6 +261,7 @@ ul {
 
 .box04 {
 	background-color: white;
+	display:flex;
 }
 
 .min1 {
@@ -243,9 +274,6 @@ ul {
 a{
  	text-decoration-line: none;
 }
-/* topbtn > a{
-	color:#FAFAFA;
-} */
 
 .box01list{
 	padding-top:5%;
@@ -266,10 +294,33 @@ hr{
 
 .slick-slide img
   {
-	   border-radius: 5%;
+	border-radius: 5%;
   
 	}
+	
+.topbtn ul{
+	list-style-type:none;
+}
+.topbtn ul li{
+	border-left:1px solid gray;
+	display:inline-block;
+	padding: 0% 2%;
+}
+.topbtn ul li:first-child{
+	border-left:none;
+}
+.btmbtn ul{
+	list-style-type:none;
+	
+}
+.btmbtn ul li{
+	border-left:1px solid gray;
+	display:inline-block;
+}
 
+.btmbtn ul li:first-child{
+	border-left:none;	/* bottom의 ul리스트의 li의 첫번째 요소의 좌측테두리 없애는것!! */
+}
 </style>
 <body>
 	<img
@@ -281,29 +332,37 @@ hr{
 		<div>
 			<a href="#"><img id="logo" src="/Img/logo/toplogo.png"></a>
 		</div>
+		
 		<ul id=depth1 class="item">
 			<li><a href="">협회소개</a>
-				<ul class="depth2">
-					<li>인사말</li>
-					<li>조직도</li>
-				</ul></li>
+				<ul class="depth2" style="width:78%;">
+					<li><a href="">인사말</a></li>
+					<li><a href="">조직도</a></li>
+				</ul>
+			</li>
 			<li><a href="">협회활동</a>
-				<ul class="depth2">
-					<li>자활복지</li>
-				</ul></li>
+				<ul class="depth2"  style="width:78%;">
+					<li><a href="">자활복지</a></li>
+				</ul>
+			</li>
 			<li><a href="">시설이용 및 회원시설안내</a>
-				<ul class="depth2">
-					<li>노숙인 시설의종류</li>
-					<li>회원시설안내</li>
-				</ul></li>
+				<ul class="depth2" style="width:78%;">
+					<li><a href="">노숙인 시설의종류</a></li>
+					<li><a href="">회원시설안내</a></li>
+				</ul>
+			</li>
 			<li><a href="">오시는길</a></li>
 			<li><a href="">게시판</a>
 				<ul class="depth2">
-					<li>공지사항</li>
-				</ul></li>
+					<li><a href="">공지사항</a></li>
+				</ul>
+			</li>
 		</ul>
 		<div class="topbtn">
-			<a href="" style="color:#FAFAFA;"> Login </a>&nbsp;<a href="" style="color:#FAFAFA;"> Join </a>
+			<ul>
+			<li><a href="" style="color:#FAFAFA;">Login</a></li>
+			<li><a href="" style="color:#FAFAFA;">&nbsp;Join</a></li>
+			</ul>
 		</div>
 	</header>
 
@@ -352,7 +411,7 @@ hr{
 						</div>
 						<div class="box box02">
 							<div class="min1">후원안내</div>
-							<br> <br>
+							<br><br>
 							<div style="text-align: center; font-weight: 800;">후원계좌</div>
 							<div style="text-align: center; font-size: 1.5rem; font-weight: 1000; color: #217397;">351-1126-4798-13</div>
 							<div style="text-align: center; font-size: 0.8rem; color:gray;">
@@ -362,14 +421,14 @@ hr{
 					</div>
 					<div class="right">
 						<div class="box box03">
-							<div class="min1">사업안내</div>
+							<div class="min1">오시는길</div>
 						</div>
 						<div class="box box04">
 							<div class="min1">공지사항</div>
 								<div style="text-align:right; margin:10%;">
-								<ul>
-									<li><a href="" style=" font-size:0.8rem; font-weight:600; color:gray;">VIEW MORE</a></li>
-								</ul>
+								<div class="view">
+									<a href="" style="color:gray; font-size:0.8rem; font-weight:600; margin-left:70%;">VIEW&nbsp;MORE</a>
+								</div>
 							</div>	
 						</div>
 					</div>
@@ -389,6 +448,7 @@ hr{
 			arrows : false
 		});
 	</script>
+
 	<footer class="f1">
 		<div
 			style="width: 13%; position: relative; top: 10%; left: 16%;">
@@ -402,9 +462,10 @@ hr{
 			대표전화:053-000-1111/팩스 053)222-3333<br> ©전국노숙인시설협회All rights
 			reserved.
 		
-		<div style="width:140%;text-align:right; margin:10%;">
+		<div class="btmbtn" style="width:140%;text-align:right; margin:10%;">
 			<ul>
-				<li><a href="" style="font-size:0.8rem; font-weight:600; color:gray;">ADMIN</a>&nbsp;<span style=color:gray;>|</span>&nbsp;<a href="" style="font-size:0.8rem; font-weight:600; color:gray;">SITEMAP</a></li>
+				<li><a href="" style="font-size:0.8rem; font-weight:600; color:gray;">ADMIN</a></li>
+				<li><a href="" style="font-size:0.8rem; font-weight:600; color:gray;">&nbsp;SITEMAP</a></li>
 			</ul>
 		</div>
 		</div>

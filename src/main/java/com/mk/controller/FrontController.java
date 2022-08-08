@@ -17,8 +17,16 @@ public class FrontController extends HttpServlet{
 	public void init() throws ServletException {
 		list = new HashMap();
 		
+		//메인
 		list.put("/main.do", new MainController());
 		
+		//인증관련
+		list.put("/Login.do", new LoginController());
+		//게시판 관련
+		
+		//회원관련
+		
+		//공지사항
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
