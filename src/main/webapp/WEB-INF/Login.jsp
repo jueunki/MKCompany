@@ -57,7 +57,7 @@ body {
 	height: 49vh;
 	display: flex;
 	justify-content: center;
-	background-color:gray;
+	
 }
 
 .m1 {
@@ -196,12 +196,11 @@ hr{
 	padding-bottom:5%;
 	text-align:center;
 }
-
 </style>
 
 <body>
 <header class="h1">
-
+	<img src="/Img/banner/bnr_img2.png" style="z-index:-9999; height:49vh; width:100%; position:absolute; object-fit: cover;">
 		<div>
 			<a href="#"><img id="logo" src="/Img/logo/toplogo.png"></a>
 		</div>
@@ -278,7 +277,7 @@ hr{
 			<span><a href="" style="color:gray;">비밀번호 찾기</a></span>
 		</div>
 		<div class="midbox2" style="border:1px solid #e1e1e1; border-radius:3px; background-color:#f5f6f8; position:absolute; width:22.4vw; height:8vh; left:12.5%; top:75%;">
-			<div style="width:7vw; position:relative; top:20%;"><img id="bnr_logo" src="/Img/banner/bnr_img.png" style="width:4.7vw; height:5vh;"></div>
+			<div style="width:7vw; position:relative; top:20%;"><img id="bnr_logo" src="/Img/banner/bnr_img1.png" style="width:4.7vw; height:5vh;"></div>
 			<div style="width:15vw; position:relative; left:30%; top:-50%; font-size:0.8rem;">
 			<span style="color:#0054a6;">현대이지웹</span><span style="font-weight:600; color:#0054a6;">1544-6062</span><br>
 			<span>홈페이지 제작 및 문의</span>

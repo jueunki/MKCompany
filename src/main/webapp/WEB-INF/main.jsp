@@ -121,19 +121,7 @@ ul {
     width:5%;
     height:5.5vh;
     margin:auto 0;
-    /* 
-    	font-size:0.8em;
-	font-weight: 800;
-	background-color:rgba(255,255,255,.2);
-	border-radius:28px;
-    padding: 0 2%;
-    z-index: 3;
-    width:5%;
-    height:5.5vh;
-    margin:auto 0;
-    
-    
-     */
+
 }
 
 .square {
