@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
-
 <style>
 @keyframes dropdown {
   from {
@@ -20,7 +19,7 @@
     opacity: 1;
   }
 }
-body {
+body { 
 	margin: 0px;
 	overflow-x: hidden; /* scroll설정하는거! */
 }
@@ -209,7 +208,6 @@ hr{
 }
 
 </style>
-
 <body>
 <header class="h1">
 	<img src="/Img/banner/bnr_img2.png" style="z-index:-9999; height:49vh; width:100%; position:absolute; object-fit: cover;">
@@ -254,63 +252,32 @@ hr{
 
 	</header>
 	<div class="siteK">
-		<h1 style="font-size:2rem;">사이트</h1>
-		<span style="font-size:0.9rem;"><a href="/main.do">🏠</a>> 사이트 > 로그인</span>		
+		<h1 style="font-size:2rem;">공지사항</h1>
+		<span style="font-size:0.9rem;"><a href="/main.do">🏠</a>&nbsp;> 공지사항 > 공지사항</span>		
 	</div>	
 	<main class="m1">
 	<div class="midbtn">
 		<ul>
-			<li><a href="" style="color:black;">사이트 맵</a></li>
-		</ul>
-		<ul>
-			<li><a href="/Login.do" style="color:#1669ad;">로그인</a></li>
+			<li><a href="/Login.do" style="color:#1669ad;">공지사항</a></li>
 		</ul>
 		<ul>	
-			<li><a href="/Join.do" style="color:black;">회원가입</a></li>
+			<li><a href="/Join.do" style="color:black;">게시판</a></li>
 		</ul>
 	</div>
+
 	
-	<div class="midbox">
-		<div>
-		<h3 style="padding-top:10%;">
-		<span style="color:#0054a6; font-weight:600">MEMBER</span>&nbsp;<span>LOGIN</span>
-		</h3>
-		<form action="#" method="#">
-		<input class="idbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:65%; padding:4%; margin:1%;" placeholder="아이디">
-		<br>
-		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:65%; padding:4%; margin:1%;" placeholder="비밀번호">
-		<br>
-		<div style="left:20%; width:30%; position:relative; left:61%; color:gray;">
-		<input type="checkbox">자동로그인
-		</div>
-		<br>
-		<div><a href="#"><input type="submit" value="로그인"  style="width:75%; border:1px solid #0054a6; background-color:#0054a6; border-radius:3px;  padding:4%; margin:1%;  color:white; font-weight:600;"></a></div></form>
-		
-		
-		<!-- 
-		
-		 -->
-		
-		
-		
-		
-		
-		<div class="midbtn2" style="font-size:0.8em; font-weight:600">
-		<ul>
-			<li><span><a href="/Join.do"  style="color:gray;">회원가입</a></span></li>
-			<li><span><a href="" style="color:gray;">아이디 찾기</a></span></li>
-			<li><span><a href="" style="color:gray;">비밀번호 찾기</a></span></li>
-		</ul>
-		</div>
-		<div class="midbox2" style="border:1px solid #e1e1e1; border-radius:3px; background-color:#f5f6f8; position:absolute; width:22.4vw; height:8vh; left:12.5%; top:75%;">
-			<div style="width:7vw; position:relative; top:20%;"><img id="bnr_logo" src="/Img/banner/bnr_img1.png" style="width:4.7vw; height:5vh;"></div>
-			<div style="width:15vw; position:relative; left:30%; top:-50%; font-size:0.8rem;">
-			<span style="color:#0054a6;">현대이지웹</span><span style="font-weight:600; color:#0054a6;">1544-6062</span><br>
-			<span>홈페이지 제작 및 문의</span>
-			</div>
-		</div>
-		</div>
-	</div>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	</main>
 	
@@ -320,13 +287,13 @@ hr{
 			<img src="/Img/logo/footerlogo.png">
 		</div>
 		<div
-			style=" width: 35%; height: 60%; position: relative; left: 33%; top: -5%;">
+			style="color:#999; width: 35%; height: 60%; position: relative; left: 33%; top: -5%;">
 			주소:대구광역시 중구 중앙대로 366 반월센트럴타워<br>
 			이메일:inyeong1233@naver.com/minku4820@gmail.com<br> *후원금
 			계좌:111-2222-3333-44농협(예금주:전국노숙인시설협회)<br> <br>
 			대표전화:053-000-1111/팩스 053)222-3333<br> ©전국노숙인시설협회All rights
 			reserved.
-		
+		 
 		<div class="btmbtn" style="width:140%;text-align:right; margin:10%;">
 			<ul>
 				<li><a href="" style="font-size:0.8rem; font-weight:600; color:gray;">ADMIN</a></li>

@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
-
 <style>
 @keyframes dropdown {
   from {
@@ -62,7 +61,7 @@ body {
 
 .m1 {
 	width: 100%;
-	height: 90vh;
+	height: 139vh;
 	margin: 0px auto;
 }
 
@@ -184,30 +183,29 @@ hr{
 	box-shadow: 2px 2px 2px 2px #F2F2F2;
 	display: flex;
 	justify-content: space-evenly;
-	font-weight:600
+	font-weight:600;
+	top:-3%;
 }
 .midbox{
 	border:1px solid #e1e1e1; 
-	width:30vw; 
-	height:60vh; 
+	width:40vw; 
+	height:112vh; 
 	margin:auto;
 	position:relative;
-	top:5%;
+	top:3%;
 	padding-bottom:5%;
 	text-align:center;
+	
+	border-radius:3px;
 }
-.midbtn2 ul{
-	list-style-type:none;
-}
-.midbtn2 ul li{
-	border-left:1px solid gray;
-	display:inline-block;
-	padding: 0% 2%;
-}
-.midbtn2 ul li:first-child{
-	border-left:none;
-}
+/* .characters{
+text-align:left;
+} */
+.characters{
+position:absolute;
+top:10%;
 
+}
 </style>
 
 <body>
@@ -255,10 +253,10 @@ hr{
 	</header>
 	<div class="siteK">
 		<h1 style="font-size:2rem;">사이트</h1>
-		<span style="font-size:0.9rem;"><a href="/main.do">🏠</a>> 사이트 > 로그인</span>		
+		<span style="font-size:0.9rem;"><a href="">🏠</a>> 사이트 > 로그인</span>		
 	</div>	
 	<main class="m1">
-	<div class="midbtn">
+		<div class="midbtn">
 		<ul>
 			<li><a href="" style="color:black;">사이트 맵</a></li>
 		</ul>
@@ -272,45 +270,63 @@ hr{
 	
 	<div class="midbox">
 		<div>
-		<h3 style="padding-top:10%;">
-		<span style="color:#0054a6; font-weight:600">MEMBER</span>&nbsp;<span>LOGIN</span>
+		<h3 style="padding-top:10%; text-align:left; margin:8%; padding:0;">
+		<span style="color:#0054a6;">SIGN</span>&nbsp;<span>UP</span>&nbsp;<span style="color:#aaa; font-size:0.9rem;">회원가입 정보입력</span>
 		</h3>
-		<form action="#" method="#">
-		<input class="idbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:65%; padding:4%; margin:1%;" placeholder="아이디">
+		
+		<div class="characters">
+		<h3 style="padding-top:0%; position:relative; right:26%; margin:5px;">
+		<span style="color:black; font-weight:600; font-size:1rem;">사이트 이용정보 입력</span>
+		</h3>
+		
+		<input class="idbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="아이디">
+		<span style="color:#666; font-size:0.8rem; position:relative; right:15%;"><br>영문자,숫자,_만 입력 가능. 최소 3자이상 입력하세요.</span>
+
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="비밀번호">
+
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="비밀번호 확인">
+
+		<h3 style="padding-top:0%; position:relative; right:31%; margin:0px;">
+		<span style="color:black; font-weight:600; font-size:1rem;">개인정보 입력</span>
+		</h3>
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="이름">
+
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="닉네임">
+		<span style="color:#666; font-size:0.8rem; position:relative; right:12%; margin:0px;"><br>공백없이 한글,영문,숫자만 입력 가능 (한글2자,영문4자 이상)</span>
+		<span style="color:#666; font-size:0.8rem; position:relative; right:11%; margin:0px;"><br>닉네임을 바꾸시면 앞으로 60일 이내에는 변경 할 수 없습니다.</span>
+
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:75%; padding:2.5%; margin:1%; position:relative;" placeholder="E-mail">
+		<h3 style="padding-top:0%; position:relative; right:31%; margin:0px;">
+		<span style="color:black; font-weight:600; font-size:1rem; position:relative;">기타 개인설정</span>
+		</h3>
+		<div class="midbox3" style="border:1px solid #e1e1e1; border-radius:3px; background-color:#f5f6f8; position:absolute; width:8vw; height:6vh; right:70%; top:98%;">
+		<input type="checkbox"><span style="font-size:0.9rem; font-weight:600;">메일 수신 동의</span>	
+		</div>
+		<div class="midbox3" style="border:1px solid #e1e1e1; border-radius:3px; background-color:#f5f6f8; position:absolute; width:8vw; height:6vh; right:70%; top:108%;">
+		<input type="checkbox"><span style="font-size:0.9rem; font-weight:600;">정보 공개 동의</span>	
+		</div>
+		<span style="color:#666; font-size:0.8rem; position:absolute; right:34%; top:115%;height:4vh;"><br>정보공개를 바꾸시면 앞으로 0일 이내에는 변경이 안됩니다.</span>	
+		<h3 style="padding-top:0%; position:absolute;   right:74.5%; top:125%; margin:0px;">
+		<span style="color:black; font-weight:600; font-size:1rem;">자동등록방지</span>
+		</h3>
+		<div style="border:1px solid black; left:9.7%; width:6.5vw; height:4.5vh; position:absolute; top:130%;"></div>
+		<div></div>
+		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px;width:6.5vw; height:4.3vh; position:absolute; top:130%; left:27%;" placeholder=" ">
+		<div style="border:1px solid #e1e1e1!important;background-color: #e1e1e1!important; border-radius:3px;width:2.3vw; height:4.5vh; position:absolute; top:130%; left:45%;">회전</div>
+		<span style="color:#666; font-size:0.8rem; position:absolute; right:50%; top:135%;"><br>자동등록방지 숫자를 순서대로 입력하세요.</span>
 		<br>
-		<input class="pwdbox" style="border:1px solid #e1e1e1!important; border-radius:3px; width:65%; padding:4%; margin:1%;" placeholder="비밀번호">
+		</div>
+		</div>
+		</div>
+		
+		
 		<br>
-		<div style="left:20%; width:30%; position:relative; left:61%; color:gray;">
-		<input type="checkbox">자동로그인
-		</div>
-		<br>
-		<div><a href="#"><input type="submit" value="로그인"  style="width:75%; border:1px solid #0054a6; background-color:#0054a6; border-radius:3px;  padding:4%; margin:1%;  color:white; font-weight:600;"></a></div></form>
-		
-		
-		<!-- 
-		
-		 -->
+		<a href="/main.do"><input type="submit" value="취소" style="border-radius:3px; position:absolute; width:4.5vw; height:8vh; padding:1.5%; margin:1%; right:50.9%; top:167%; border:1px solid #bbb; background-color:#bbb; color:white; font-weight:600;"></a>
+		<a href=""><input type="submit" value="회원가입" style="border-radius:3px; position:absolute; width:11.5vw; height:8vh; padding:1.5%; margin:1%; right:39%; top:167%; border:1px solid #0054a6; background-color:#0054a6; color:white; font-weight:600;"></a>
 		
 		
 		
-		
-		
-		<div class="midbtn2" style="font-size:0.8em; font-weight:600">
-		<ul>
-			<li><span><a href="/Join.do"  style="color:gray;">회원가입</a></span></li>
-			<li><span><a href="" style="color:gray;">아이디 찾기</a></span></li>
-			<li><span><a href="" style="color:gray;">비밀번호 찾기</a></span></li>
-		</ul>
-		</div>
-		<div class="midbox2" style="border:1px solid #e1e1e1; border-radius:3px; background-color:#f5f6f8; position:absolute; width:22.4vw; height:8vh; left:12.5%; top:75%;">
-			<div style="width:7vw; position:relative; top:20%;"><img id="bnr_logo" src="/Img/banner/bnr_img1.png" style="width:4.7vw; height:5vh;"></div>
-			<div style="width:15vw; position:relative; left:30%; top:-50%; font-size:0.8rem;">
-			<span style="color:#0054a6;">현대이지웹</span><span style="font-weight:600; color:#0054a6;">1544-6062</span><br>
-			<span>홈페이지 제작 및 문의</span>
-			</div>
-		</div>
-		</div>
-	</div>
+	
 	
 	</main>
 	

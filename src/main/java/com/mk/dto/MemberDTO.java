@@ -6,7 +6,6 @@ public class MemberDTO {
 	private String repwd;
 	private String name;
 	private String nickname;
-	private String zipcode;
 	private String addr1;
 	private String addr2;
 	private String email;
@@ -41,12 +40,6 @@ public class MemberDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
 	public String getAddr1() {
 		return addr1;
 	}
@@ -71,10 +64,10 @@ public class MemberDTO {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	@Override
+	@Override 
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pwd=" + pwd + ", repwd=" + repwd + ", name=" + name + ", nickname=" + nickname
-				+ ", zipcode=" + zipcode + ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", grade="
+				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", grade="
 				+ grade + "]";
 	}
 

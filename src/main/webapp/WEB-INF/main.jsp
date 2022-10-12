@@ -318,7 +318,7 @@ hr{
 	<header class="h1">
 
 		<div>
-			<a href="#"><img id="logo" src="/Img/logo/toplogo.png"></a>
+			<a href="main.do"><img id="logo" src="/Img/logo/toplogo.png"></a>
 		</div>
 		
 		<ul id=depth1 class="item">
@@ -339,17 +339,18 @@ hr{
 					<li><a href="">회원시설안내</a></li>
 				</ul>
 			</li>
-			<li><a href="">오시는길</a></li>
-			<li><a href="">게시판</a>
+			<li><a href="/map.do">오시는길</a></li>
+			<li><a href="">공지사항</a>
 				<ul class="depth2">
 					<li><a href="">공지사항</a></li>
+					<li><a href="">게시판</a></li>
 				</ul>
 			</li>
 		</ul>
 		<div class="topbtn">
 			<ul>
-			<li><a href="" style="color:#FAFAFA;">Login</a></li>
-			<li><a href="" style="color:#FAFAFA;">&nbsp;Join</a></li>
+			<li><a href="/Login.do" style="color:#FAFAFA;">Login</a></li>
+			<li><a href="/Join.do" style="color:#FAFAFA;">&nbsp;Join</a></li>
 			</ul>
 		</div>
 	</header>

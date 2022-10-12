@@ -34,17 +34,14 @@ public class MemberDAO {
 	public boolean insert(MemberDTO dto)
 	{
 		try {
-			pstmt=conn.prepareStatement("insert into tbl_member values(?,?,?,?,?,?,?)");
+			pstmt=conn.prepareStatement("insert into tbl_mk values(?,?,?,?,?,?,?)");
 			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getPwd());
 			pstmt.setString(3, dto.getRepwd());
 			pstmt.setString(4, dto.getName());
 			pstmt.setString(5, dto.getNickname());
-			pstmt.setString(6, dto.getZipcode());
-			pstmt.setString(7, dto.getAddr1());
-			pstmt.setString(8, dto.getAddr2());
-			pstmt.setString(9, dto.getEmail());
-			pstmt.setInt(10, dto.getGrade());
+			pstmt.setString(6, dto.getEmail());
+			pstmt.setInt(7, dto.getGrade());
 			int result = pstmt.executeUpdate();
 			if(result>0)
 				return true;
@@ -62,7 +59,7 @@ public class MemberDAO {
 	{
 		MemberDTO dto = new MemberDTO();
 		try {
-			pstmt=conn.prepareStatement("select * from tbl_member where email=?");
+			pstmt=conn.prepareStatement("select * from tbl_mk where email=?");
 			pstmt.setString(1, email);
 			
 			rs = pstmt.executeQuery();
@@ -100,7 +97,7 @@ public class MemberDAO {
 		try {
 			
 			pstmt=conn.prepareStatement
-					("update tbl_member set id=?,pwd=?,repwd=?,name=?,nickname=?,addr1=?,addr2=?,grade=? where email=?");
+					("update tbl_mk set id=?,pwd=?,repwd=?,name=?,nickname=?,addr1=?,addr2=?,grade=? where email=?");
 			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getPwd());
 			pstmt.setString(3, dto.getRepwd());
