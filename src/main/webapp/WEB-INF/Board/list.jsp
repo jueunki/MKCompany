@@ -9,7 +9,7 @@
 <%@include file="/resources/include/link.jsp"%>
 <link rel="stylesheet" href="/resources/css/common.css">
 
-</head>
+</head> 
 <body>
 
 	<div class="container-md" id=wrapper style="margin: 100px auto;">
