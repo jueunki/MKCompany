@@ -11,6 +11,8 @@ import com.mk.service.BoardService;
 
 public class BoardReplypostController implements SubController{
 
+	BoardService service = BoardService.getInstance();
+	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
@@ -19,17 +21,24 @@ public class BoardReplypostController implements SubController{
 		String nowPage = req.getParameter("nowPage");
 		System.out.println(comment + " " + nowPage);
 		
+		
 		HttpSession session = req.getSession();
-		BoardDTO dto = (BoardDTO)session.getAttribute("dto");//읽고있는 게시물
-		String email = (String)session.getAttribute("email");//접속중인 email
+		BoardDTO dto = (BoardDTO)session.getAttribute("dto"); //읽고 있는 게시물
+		String email = (String)session.getAttribute("email"); //접속 중인 email
+		
 		
 		ReplyDTO rdto = new ReplyDTO();
 		rdto.setBno(dto.getNo());
 		rdto.setWriter(email);
 		rdto.setContent(comment);
 		
-		//service 실행
-		BoardService.replypost(rdto);
+		//입력값 검증
+		
+		//서비스 실행
+		service.replypost(rdto);
+		
+		//뷰 - x
+		
 	}
 
 }

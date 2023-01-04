@@ -2,6 +2,7 @@ package com.mk.dto;
 
 public class BoardDTO {
 	private int no;
+	private String title;
 	private String content;
 	private String writer;
 	private String regdate;
@@ -12,11 +13,18 @@ public class BoardDTO {
 	private String filesize;
 	
 	
+	//Getter and Setter / toString 
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContent() {
 		return content;
@@ -68,17 +76,11 @@ public class BoardDTO {
 	}
 	@Override
 	public String toString() {
-		return "BoardDTO [no=" + no + ", content=" + content + ", writer=" + writer + ", regdate=" + regdate + ", pwd="
-				+ pwd + ", count=" + count + ", ip=" + ip + ", filename=" + filename + ", filesize=" + filesize + "]";
-	}
-	public void setTitle(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return "BoardDTO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", pwd=" + pwd + ", count=" + count + ", ip=" + ip + ", filename=" + filename
+				+ ", filesize=" + filesize + "]";
 	}
 	
 	
 }
+

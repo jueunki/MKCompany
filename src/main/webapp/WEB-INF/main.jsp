@@ -4,11 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>main</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
+
+<%
+	String msg = request.getParameter("msg");
+	if(msg!=null && !"".equals(msg)){
+		%>
+		<script>
+			alert('<%=msg%>');
+		</script>
+		<%
+	}
+%>
+
 <style>
 @keyframes dropdown {
   from {
@@ -324,7 +337,7 @@ hr{
 		<ul id=depth1 class="item">
 			<li><a href="">협회소개</a>
 				<ul class="depth2" style="width:78%;">
-					<li><a href="">인사말</a></li>
+					<li><a href="/greetings.do">인사말</a></li>
 					<li><a href="">조직도</a></li>
 				</ul>
 			</li>
@@ -337,13 +350,13 @@ hr{
 				<ul class="depth2" style="width:78%;">
 					<li><a href="">노숙인 시설의종류</a></li>
 					<li><a href="">회원시설안내</a></li>
-				</ul>
+				</ul> 
 			</li>
 			<li><a href="/map.do">오시는길</a></li>
-			<li><a href="">공지사항</a>
+			<li><a href="/Board/list.do">공지사항</a>
 				<ul class="depth2">
-					<li><a href="">공지사항</a></li>
-					<li><a href="">게시판</a></li>
+					<li><a href="/Board/list.do">공지사항</a></li>
+					<li><a href="/Board/list.do">게시판</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -416,7 +429,7 @@ hr{
 							<div class="min1">공지사항</div>
 								<div style="text-align:right; margin:10%;">
 								<div class="view">
-									<a href="" style="color:gray; font-size:0.8rem; font-weight:600; margin-left:70%;">VIEW&nbsp;MORE</a>
+									<a href="/list.do" style="color:gray; font-size:0.8rem; font-weight:600; margin-left:70%;">VIEW&nbsp;MORE</a>
 								</div>
 							</div>	
 						</div>

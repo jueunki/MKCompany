@@ -8,16 +8,25 @@ import com.mk.service.BoardService;
 
 public class BoardDownloadController implements SubController{
 
+	BoardService service = BoardService.getInstance();
+	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		//파라미터
-		String filename = req.getParameter("filename");
-		String flag = req.getParameter("flag"); //전체 다운받기용 확인!
+		String filename=req.getParameter("filename");
+		String flag = req.getParameter("flag"); //전체다운받기용 확인
 		
+		//입력값
 		//서비스
-		boolean result = false;
-		result = BoardService.download(filename, req, resp);
+		boolean result=false;
+		result=service.download(filename, req, resp);
+	 
+		
+		
+		//View
+		
+		
 	}
 
 }

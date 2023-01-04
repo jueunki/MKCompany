@@ -1,5 +1,6 @@
 package com.mk.controller.board;
 
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -13,32 +14,42 @@ import com.mk.dto.ReplyDTO;
 import com.mk.service.BoardService;
 
 public class BoardReplylistController implements SubController{
-
+	BoardService service = BoardService.getInstance();
+	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
+		//읽고 있는 게시물의 모든 댓글 출력
 		HttpSession session = req.getSession();
 		BoardDTO dto = (BoardDTO)session.getAttribute("dto");
 		
-		ArrayList<ReplyDTO> list = BoardService.getReplylist(dto.getNo());
+		ArrayList<ReplyDTO> list = service.getReplylist(dto.getNo());		
+		
 		
 		try {
 			PrintWriter out = resp.getWriter();
 			
 			for(int i=0;i<list.size();i++) {
 				
-				//이걸 어디서 받아왔었지............
-				out.println("<div class=\"from-control\">");
+				out.println("<div class=\"form-control\">");
 				out.println("<span style=font-size:0.5rem>"+list.get(i).getWriter()+"</span>&nbsp;&nbsp;");
 				out.println("<span style=font-size:0.5rem>"+list.get(i).getRegdate()+"</span><br>");
 				out.println("<span>"+list.get(i).getContent()+"</span>");
 				out.println("</div>");
+				
+				
 			}
 			
+
+		
+		
 			
-		} catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		
+		
 		
 	}
 

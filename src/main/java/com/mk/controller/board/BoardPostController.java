@@ -13,32 +13,38 @@ import com.mk.service.BoardService;
 
 public class BoardPostController implements SubController{
 
-	public void execute(HttpServletRequest req, HttpServletResponse resp, BoardService BoardServive) {
+	BoardService service = BoardService.getInstance();
+	
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		String flag = req.getParameter("flag");
 		try {
-			if(flag==null)
+			
+			if(flag==null) //list.jsp에서 글쓰기 버튼을 누른 경우
 			{
-				req.getRequestDispatcher("WEB-INF/board/post.jsp").forward(req, resp);
+				req.getRequestDispatcher("/WEB-INF/board/post.jsp").forward(req, resp);
 			}
-			else
+			else 		//post.jsp에서 등록할 내용을 기입하고 글쓰기 버튼 누른 경우 
 			{
-				//파라미터 받기
+				
+				// 1 파라미터
+				//title,content,pwd,writer,ip,(filename,filesize)..
 				String title = req.getParameter("title");
 				String content = req.getParameter("content");
 				String pwd = req.getParameter("pwd");
 				String ip = req.getRemoteAddr();
 				HttpSession session = req.getSession();
-				String writer = (String)session.getAttribute("email");
+				String writer = (String)session.getAttribute("email");		
 				
-				//입력값
+				// 2 입력값
 				if(title==null||content==null||pwd==null||ip==null)
 				{
 					req.getRequestDispatcher("/WEB-INF/board/post.jsp").forward(req, resp);
-					return;
+					return ;
 				}
 				
-				//서비스 실행
+				// 3 서비스실행
 				BoardDTO dto = new BoardDTO();
 				dto.setTitle(title);
 				dto.setContent(content);
@@ -46,37 +52,34 @@ public class BoardPostController implements SubController{
 				dto.setIp(ip);
 				dto.setWriter(writer);
 				
-			//Part가파일 part 전달
+				//추가(정리8일차-Upload) 파일 part 전달
 				ArrayList<Part> parts=(ArrayList<Part>) req.getParts();
-				boolean result = false;
+				boolean result=false;
 				long size = parts.get(3).getSize();
+				 
+				if(size==0) //파일전달이 안된경우
+					result = service.PostBoard(dto);
+				else			//파일이포함되어 있는경우
+					result = service.PostBoard(dto,parts);
 				
-				if(size==0) //파일전달이 되지않은경우에
-					result = BoardService.PostBoard(dto);
-				else		//파일이 포함되어있는경우
-					result = BoardServive.PostBoard(dto,parts);
-				
-				//view
+				// 4 View
 				if(result) {
+//
 					resp.sendRedirect("/Board/list.do");
-					return;
+					return ;
 				}
 				else {
 					req.getRequestDispatcher("/WEB-INF/board/post.jsp").forward(req, resp);
-					return;
+					return ;
 				}
-				
 			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-	}
-
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+		} 
 		
 	}
 
 }
+

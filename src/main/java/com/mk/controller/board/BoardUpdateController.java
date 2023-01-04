@@ -33,7 +33,7 @@ public class BoardUpdateController implements SubController{
 			dto.setContent(content);			//변경된 컨텐츠
 			BoardService.UpdateBoard(dto);			//업데이트 요청서비스
 			session.setAttribute("dto", dto);	//세션객체에 읽고있는 게시물을 변경후 저장한다.			
-			
+			 
 			//Read.jsp로 이동(no,nowPage전달!)
 			try {
 				String MSG="Update Succese!";

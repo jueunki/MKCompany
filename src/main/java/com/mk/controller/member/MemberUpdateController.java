@@ -10,7 +10,7 @@ import com.mk.service.MemberService;
 
 public class MemberUpdateController implements SubController{
 
-	MemberService service = MemberService.getInstance();
+MemberService service = MemberService.getInstance();
 	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -30,21 +30,21 @@ public class MemberUpdateController implements SubController{
 				String pwd=req.getParameter("pwd");
 				
 				HttpSession session = req.getSession();
-				String email = (String)session.getAttribute("email");
-				MemberDTO dto = service.MemberSearch(email);
+				String id = (String)session.getAttribute("id");
+				MemberDTO dto = service.MemberSearch(id);
 				
 				if(service.passwordEncoder.checkpw(pwd, dto.getPwd()))
 				{
 					//패스워드가 일치한 경우
 					//->수정된 값 파라미터 받기
-					String addr1 = req.getParameter("addr1");
-					String addr2 = req.getParameter("addr2");
+					String Pwd = req.getParameter("pwd");
+					String repwd = req.getParameter("repwd");
 					
-					System.out.println("Addr1 : " + addr1);
-					System.out.println("Addr2 : " + addr2);
+					System.out.println("Pwd : " + Pwd);
+					System.out.println("Repwd : " + repwd);
 					
-					dto.setAddr1(addr1);
-					dto.setAddr2(addr2);
+					dto.setPwd(Pwd);
+					dto.setRepwd(repwd);
 					
 					String newpwd = req.getParameter("newpwd");
 					
@@ -68,7 +68,7 @@ public class MemberUpdateController implements SubController{
 					req.getRequestDispatcher("/WEB-INF/member/password.jsp").forward(req, resp);
 					return ;
 				}
-				 
+				
 			}
 			
 		} catch (Exception e) {
@@ -80,4 +80,3 @@ public class MemberUpdateController implements SubController{
 	}
 
 }
-

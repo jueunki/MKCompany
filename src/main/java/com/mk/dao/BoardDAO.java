@@ -24,8 +24,7 @@ public class BoardDAO {
 	private static BoardDAO instance;
 
 	public static BoardDAO getInstance() {
-		if (instance == null)
-			;
+		if (instance == null);
 		instance = new BoardDAO();
 		return instance;
 	}
@@ -35,24 +34,35 @@ public class BoardDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
 			System.out.println("DBConnection..");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 	}
 
 	// start Page, end Page 받아서 조회한다.
-	public List<BoardDTO> Select(int start, int end) {
+	public List<BoardDTO> Select(int start, int end)
+	{
+		
 		ArrayList<BoardDTO> list = new ArrayList();
 		BoardDTO dto = null;
 		try {
-			String sql = "";
+			
+			String sql=
+			"select rn, no, title, content, writer, regdate,pwd,count,ip,filename,filesize"
+			+ " from"
+			+ "("
+			+ "    select /*+ INDEX_DESC (tbl_board PK_NO) */"
+			+ "    rownum rn, no, title, content, writer, regdate,pwd,count,ip,filename,filesize"
+			+ "    from tbl_board where rownum<=?"
+			+ ")"
+			+ " where rn>=?";
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, end); // 여기는 마지막 rownumber
-			pstmt.setInt(2, start); // 여기가 start rownumber
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				dto = new BoardDTO();
+			pstmt.setInt(1, end); //마지막 rownum
+			pstmt.setInt(2, start); //시작 rownum
+			rs=pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				dto=new BoardDTO();
 				dto.setNo(rs.getInt("no"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -65,53 +75,43 @@ public class BoardDAO {
 				dto.setCount(rs.getInt("count"));
 				list.add(dto);
 			}
-
-		} catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return list;
 	}
-
-	// 모든 게시물 개수 조회란.
-	public int getTotalCount() {
-		int result = 0;
+	
+	//모든 게시물 개수 조회
+	public int getTotalCount()
+	{
+		int result=0;
 		try {
-			pstmt = conn.prepareStatement("");
-			rs = pstmt.executeQuery();
+			
+			pstmt = conn.prepareStatement("select count(*) from tbl_board");
+			rs =pstmt.executeQuery();
 			rs.next();
 			result = rs.getInt(1);
-
-		} catch (Exception e) {
+			
+			
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return result;
 	}
-
-	public boolean Insert(BoardDTO dto) {
+	
+	
+	public boolean Insert(BoardDTO dto)
+	{
+		
 		try {
-			pstmt = conn.prepareStatement("");
+		
+			pstmt = conn.prepareStatement("insert into tbl_board values(tbl_board_seq.NEXTVAL,?,?,?,sysdate,?,0,?,?,?)");
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getWriter());
@@ -119,30 +119,35 @@ public class BoardDAO {
 			pstmt.setString(5, dto.getIp());
 			pstmt.setString(6, dto.getFilename());
 			pstmt.setString(7, dto.getFilesize());
-
+			
+			
 			int result = pstmt.executeUpdate();
-			if (result > 0)
+			if(result>0)
 				return true;
-
-		} catch (Exception e) {
+			
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			
+			try{pstmt.close();}catch(Exception e) {e.printStackTrace();}
+			
 		}
 		return false;
+		
 	}
-
-	public BoardDTO Select(int No) {
+	
+	
+	public BoardDTO Select(int No)
+	{
+		
 		BoardDTO dto = new BoardDTO();
 		try {
-			pstmt = conn.prepareStatement("select * from tbl_board where no=?");
+		
+			pstmt=conn.prepareStatement("select * from tbl_board where no=?");
 			pstmt.setInt(1, No);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next())
+			{
 				dto.setWriter(rs.getString("writer"));
 				dto.setContent(rs.getString("content"));
 				dto.setTitle(rs.getString("title"));
@@ -153,195 +158,167 @@ public class BoardDAO {
 				dto.setFilesize(rs.getString("filesize"));
 				dto.setCount(rs.getInt("count"));
 				dto.setRegdate(rs.getString("regdate"));
-
 			}
-		} catch (Exception e) {
+	
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return dto;
 	}
-
-	// 마지막 number확인부분
-	public int getLastNo() {
-		try {
-			pstmt = conn.prepareStatement("select last_number from user_sepuences where sequence_name='TBL_BOARD_SEQ'");
+	
+	//마지막 No 확인 
+	public int getLastNo()
+	{
+		try 
+		{
+			pstmt=conn.prepareStatement("select last_number from user_sequences where sequence_name='TBL_BOARD_SEQ'");
 			rs = pstmt.executeQuery();
 			rs.next();
-			int no = rs.getInt(1); // number의 값
-
+			int no = rs.getInt(1); //no값
+			
 			return no;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
+		}catch(Exception e) {
 				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
+		}			
 		return 0;
 	}
 
-	// count 증가부분!
-	public void CountUp(int no) {
+	
+	//카운트 증가 
+	public void CountUp(int no)
+	{
 		try {
-			pstmt = conn.prepareStatement("update tbl_board set count+1 where no=?");
+			
+			pstmt = conn.prepareStatement("update tbl_board set count=count+1 where no=?");
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
-
-		} catch (Exception e) {
+			
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 	}
-
-	public boolean Update(BoardDTO dto) {
+	
+	public boolean Update(BoardDTO dto)
+	{
+		
 		try {
+		
 			pstmt = conn.prepareStatement("update tbl_board set title=?,content=? where no=?");
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setInt(3, dto.getNo());
-			int result = pstmt.executeUpdate();
-			if (result > 0)
+			int result=pstmt.executeUpdate();
+			if(result>0)
 				return true;
-
-		} catch (Exception e) {
+		
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return false;
+		
 	}
-
-	public boolean Delete(BoardDTO dto) {
+	
+	
+	
+	public boolean Delete(BoardDTO dto)
+	{
+		
 		try {
-			// DB삭제
+			//DB삭제
 			pstmt = conn.prepareStatement("delete from tbl_board where no=?");
-			pstmt.setInt(1, dto.getNo());
+			pstmt.setInt(1,dto.getNo());
 			int result = pstmt.executeUpdate();
-			if (result > 0)
+			if(result>0)
 				return true;
-
-		} catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return false;
 	}
-
-	// 댓글달기
+	
+	
+	//댓글달기 
 	public boolean replypost(ReplyDTO rdto) {
 		try {
+			
 			pstmt = conn.prepareStatement("insert into tbl_reply values(REPLY_SEQ.NEXTVAL,?,?,?,sysdate)");
 			pstmt.setInt(1, rdto.getBno());
 			pstmt.setString(2, rdto.getWriter());
 			pstmt.setString(3, rdto.getContent());
-			int result = pstmt.executeUpdate();
-			if (result > 0)
+			int result=pstmt.executeUpdate();
+			if(result>0)
 				return true;
-
-		} catch (Exception e) {
+			
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return false;
+		
 	}
-
-	// 댓글 가져오기
-	public ArrayList<ReplyDTO> getReplylist(int bno) {
+	
+	//댓글가져오기
+	public ArrayList<ReplyDTO> getReplylist(int bno){
+		
 		ArrayList<ReplyDTO> list = new ArrayList();
-		ReplyDTO dto = null;
+		ReplyDTO dto=null;
 		try {
 			pstmt = conn.prepareStatement("select * from tbl_reply where bno=? order by rno desc");
 			pstmt.setInt(1, bno);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
 				dto = new ReplyDTO();
 				dto.setRno(rs.getInt("rno"));
 				dto.setBno(rs.getInt("bno"));
 				dto.setContent(rs.getString("content"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setRegdate(rs.getString("regdate"));
-				list.add(dto);
-			}
-		} catch (Exception e) {
+				list.add(dto);	
+			}		
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
 		return list;
 	}
-
-	// 댓글 카운트
+	//댓글 카운트
 	public int getTotalReplyCnt(int bno) {
-		int tcnt = 0;
+		
+		int tcnt=0;
 		try {
+			
 			pstmt = conn.prepareStatement("select count(*) from tbl_reply where bno=?");
 			pstmt.setInt(1, bno);
-			rs = pstmt.executeQuery();
+			rs=pstmt.executeQuery();
 			rs.next();
-			tcnt = rs.getInt(1);
-
-		} catch (Exception e) {
+			tcnt=rs.getInt(1);
+			
+		
+		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		}finally{
+			try {rs.close();}catch(Exception e) {e.printStackTrace();}
+			try {pstmt.close();}catch(Exception e) {e.printStackTrace();}
 		}
-		return tcnt;
-
+		return tcnt;		
 	}
+	
+	
+	
 }

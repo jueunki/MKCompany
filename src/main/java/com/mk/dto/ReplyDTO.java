@@ -6,6 +6,8 @@ public class ReplyDTO {
 	private String writer;
 	private String content;
 	private String regdate;
+	
+	
 	@Override
 	public String toString() {
 		return "ReplyDTO [rno=" + rno + ", bno=" + bno + ", writer=" + writer + ", content=" + content + ", regdate="

@@ -1,1 +1,13 @@
 @charset "UTF-8";
+
+body {
+	margin: 0px;
+	overflow-x: hidden; /* scroll설정하는거! */
+}
+
+.m1 {
+	width: 100%;
+	height: 90vh;
+	margin: 0px auto;
+	/* border: 1px solid gray; */
+}
